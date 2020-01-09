@@ -1,7 +1,3 @@
-/**
- * vista estructurada por componentes
- * 
- */
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Page from "./Page";
@@ -20,4 +16,4 @@ const mapStateToProps = (state) => {
         optionsBar: state.optionsBar
     }
 }
-export default connect()(Admin);
+export default connect(mapStateToProps)(Admin);

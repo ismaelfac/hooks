@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import TopBar from '../../components/navbars/TopBars';
 
 function Page(props) {
+    console.log(props)
     return(
         <Fragment>
              <CssBaseline />

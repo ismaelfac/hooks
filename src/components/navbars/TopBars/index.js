@@ -25,7 +25,7 @@ export default function TopBars(props) {
   const {
     optionsBar
   } = props;
-  const isEmpty  = optionsBar.length === 0; 
+  const isEmpty  = (optionsBar.length === 0)?null:0; 
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -37,11 +37,11 @@ export default function TopBars(props) {
             News
           </Typography>
           {isEmpty ?
-            <div></div>
+            <div>
+              <h1>Vacio</h1>
+            </div>
             :
             <Fragment>
-              <Button color="inherit">{optionsBar[1].title}</Button>
-              <Button color="inherit">{optionsBar[0].title}</Button>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
