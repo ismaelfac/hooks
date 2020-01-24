@@ -2,19 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Page from "./Page";
 
-class Web extends Component {
+class Autocomplete extends Component {
     state = {};
     render() {
-        const { optionsBar } = this.props;
-        console.log(optionsBar);
+        const { label, arrayData } = this.props;
         return(
-            <Page optionsBar={[]} />
+            <Page label={label} arrayData={arrayData} />
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
-        optionsBar: state.Options
+
     }
 }
-export default connect(mapStateToProps)(Web);
+export default connect(mapStateToProps)(Autocomplete);

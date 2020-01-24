@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "photoURL": "",
+      "email": "ismaelfac@gmail.com",
+      "password": "123",
+      "isLoggedIn": false
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

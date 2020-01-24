@@ -1,10 +1,6 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
+import { AppBar, Toolbar, Typography, Button, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
@@ -25,7 +21,7 @@ export default function TopBars(props) {
   const {
     optionsBar
   } = props;
-  const isEmpty  = (optionsBar.length === 0)?null:0; 
+  const isAuth = (optionsBar.length === 0 ? false : true);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -36,12 +32,8 @@ export default function TopBars(props) {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          {isEmpty ?
+          {isAuth ?
             <div>
-              <h1>Vacio</h1>
-            </div>
-            :
-            <Fragment>
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -50,6 +42,13 @@ export default function TopBars(props) {
               >
                 <AccountCircle />
               </IconButton>
+              <Button component="button" href="/" color="inherit">{optionsBar[1].title}</Button>
+            </div>
+            :
+            <Fragment>
+              <Button component="button" href="/sign-in-side" color="inherit">
+                Login
+              </Button>
             </Fragment>
           }
         </Toolbar>
