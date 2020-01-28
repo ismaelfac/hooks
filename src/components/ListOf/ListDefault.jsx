@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Hidden from '@material-ui/core/Hidden';
 import Page from './PageDefault';
 import PageCard from './PageCard';
-import Pagination from 'pagination-react-hooks';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,32 +18,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const show = (value) => (
-  <div>
-    {value &&
-      <PageCard 
-      key={value.id}
-      image={value.image}
-      title={value.title}
-      content={value.content}
-    />
-    }
-  </div>
-)
-
 function List(props) {
   const classes = useStyles();
   const { posts } = props;
-  
+   console.log(posts)
   return (
     <div className={classes.container}>  
-        <Pagination
-            data={posts}
-            Show={show}
-            displayNumber="4"
-            previousText="Anterior"
-            nextText="Siguiente"
-          />
+      {posts &&
+        posts.map(post => {
+          return(
+            <div className={classes.paper}>
+              <Page 
+                key={post.id}
+                image={post.image}
+                title={post.title}
+                content={post.content}
+              />
+            </div> 
+        )})        
+      }
     </div>
   );
 }
