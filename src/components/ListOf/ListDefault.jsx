@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Page from './PageDefault';
 import PageCard from './PageCard';
+import Pagination from 'pagination-react-hooks';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,22 +22,30 @@ const useStyles = makeStyles(theme => ({
 function List(props) {
   const classes = useStyles();
   const { posts } = props;
-   console.log(posts)
-  return (
-    <div className={classes.container}>  
-      {posts &&
-        posts.map(post => {
-          return(
-            <div className={classes.paper}>
-              <Page 
-                key={post.id}
-                image={post.image}
-                title={post.title}
-                content={post.content}
-              />
-            </div> 
-        )})        
+  const show = () => (
+    <Fragment>
+      { posts.map(post => (
+          <div className={classes.paper}>
+            <Page 
+              key={post.id}
+              image={post.image}
+              title={post.title}
+              content={post.content}
+            />     
+          </div>
+        ))
       }
+    </Fragment>
+  )
+  return (
+    <div className={classes.container}>
+      <Pagination
+          data={posts}
+          Show={show}
+          displayNumber="4"
+          previousText="Anterior"
+          nextText="Siguiente"
+        />
     </div>
   );
 }

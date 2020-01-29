@@ -2,8 +2,6 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import ListDefault from "./ListDefault";
 import { getPosts as getPostsAction } from "../../redux/actions";
-import Pagination from 'pagination-react-hooks';
-
 
 class List extends Component {
     state = {};
@@ -13,21 +11,9 @@ class List extends Component {
     }    
     render() {
         const { posts } = this.props;
-        const show = (posts) => (
-            <div>
-                {console.log(posts.title)}
-                <ListDefault posts={posts}/>
-            </div>
-        )
         return(
             <Fragment>        
-                <Pagination
-                    data={posts}
-                    Show={show}
-                    displayNumber="7"
-                    previousText="Anterior"
-                    nextText="Siguiente"
-                /> 
+                <ListDefault posts={posts} /> 
             </Fragment>
         )
     }
