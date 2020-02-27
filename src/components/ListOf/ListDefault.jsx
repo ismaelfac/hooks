@@ -1,52 +1,34 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Page from './PageDefault';
+import Grid from '@material-ui/core/Grid';
 import PageCard from './PageCard';
-import Pagination from 'pagination-react-hooks';
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    flex: '1 0 auto',
-    margin: theme.spacing(1),
-  },
+    justifyContent: 'space-between'
+  }
 }));
 
-function List(props) {
+const List = (props) => {
   const classes = useStyles();
   const { posts } = props;
-  const show = () => (
-    <Fragment>
-      { posts.map(post => (
-          <div className={classes.paper}>
-            <Page 
+
+  return (
+    <Grid container direction="row" justify="space-between" alignItems="center">
+      <div className={classes.container}>
+          {posts.map((post) => 
+            <PageCard 
               key={post.id}
               image={post.image}
               title={post.title}
               content={post.content}
-            />     
-          </div>
-        ))
-      }
-    </Fragment>
-  )
-  return (
-    <div className={classes.container}>
-      <Pagination
-          data={posts}
-          Show={show}
-          displayNumber="4"
-          previousText="Anterior"
-          nextText="Siguiente"
-        />
-    </div>
+            />
+          )}
+      </div>
+    </Grid>
   );
 }
 
